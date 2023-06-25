@@ -1,0 +1,39 @@
+{
+  "articles": [
+    {
+      "slug": "Write-new-test-article-1850",
+      "title": "Title 1",
+      "description": "praticing Cypress",
+      "body": "test",
+      "tagList": [],
+      "createdAt": "2023-06-23T16:17:14.694Z",
+      "updatedAt": "2023-06-23T16:17:14.694Z",
+      "favorited": false,
+      "favoritesCount": 1,
+      "author": {
+        "username": "CyTestUser",
+        "bio": "2222",
+        "image": "https://i.stack.imgur.com/34AD2.jpg",
+        "following": false
+      }
+    },
+    {
+      "slug": "This-is-the-title-VBB04-1850",
+      "title": "Title 2",
+      "description": "This is a description",
+      "body": "This is a body of the article",
+      "tagList": [],
+      "createdAt": "2023-06-23T15:57:11.624Z",
+      "updatedAt": "2023-06-23T15:57:11.624Z",
+      "favorited": false,
+      "favoritesCount": 5,
+      "author": {
+        "username": "CyTestUser",
+        "bio": "2222",
+        "image": "https://i.stack.imgur.com/34AD2.jpg",
+        "following": false
+      }
+    }
+  ],
+  "articlesCount": 1910
+}
