@@ -50,7 +50,7 @@ describe('Test with backend', () => {
     cy.get('app-article-list button').eq(1).click().should('contain', '6')
   })
 
-  it.only('intercepting and modifying the request and response', () => {
+  it('intercepting and modifying the request and response', () => {
     // intercept must be called before the request
     //1.
     // cy.intercept('POST','**/articles', req => {
@@ -77,6 +77,56 @@ describe('Test with backend', () => {
       expect(xhr.request.body.article.body).to.equal('Body of the article')
       expect(xhr.response.body.article.description).to.equal('This is a description 2')
     })
+  })
+
+  it.only('delete an new article in global feed', () => {
+    // const userCredentials = {
+    //   "user": {
+    //       "email": "artem.bondar16@gmail.com",
+    //       "password": "CypressTest1"
+    //   }
+    // }
+
+    const bodyRequest = {
+      "article": {
+          "title": "Request from API XY",
+          "description": "API testing",
+          "body": "Angular",
+          "tagList": []
+      }
+  }
+    // cy.request('POST','https://api.realworld.io/api/users/login?Con', userCredentials)
+    //   .its('body')
+    //   .then(body => {
+    //     const token = body.user.token
+    cy.get('@token').then(token => {
+        cy.request({
+          method: 'POST',
+          url: Cypress.env('apiUrl') + '/api/articles/',
+          headers: {
+            Authorization: `Token ${token}`
+          },
+          body: bodyRequest
+        }).then(response => {
+          expect(response.status).to.equal(200)
+        })
+
+        cy.contains('Global Feed').click()
+        cy.wait(5000)
+        cy.get('.article-preview').first().click()
+        cy.get('[class="article-actions"]').contains(' Delete Article ').click()
+
+        cy.request({
+          method: 'GET',
+          url: Cypress.env('apiUrl') + '/api/articles?limit=10&offset=0',
+          headers: {
+            Authorization: `Token ${token}`
+          }
+        }).its('body').then( body => {
+          expect(body.articles[0].title).not.to.equal('Request from API XY')
+        })
+
+      })
   })
 
 })
