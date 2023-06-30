@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2023-06-29T02:07:57.226Z",
-    "end": "2023-06-29T02:08:15.642Z",
-    "duration": 18416
+    "start": "2023-06-30T11:26:15.740Z",
+    "end": "2023-06-30T11:26:38.171Z",
+    "duration": 22431
   },
   "results": [
     {
-      "uuid": "e7c50461-6962-4c87-b728-2d2c9f292696",
+      "uuid": "f95a7589-abc6-4dad-9792-a1455b3c26ea",
       "title": "",
       "fullFile": "cypress\\e2e\\secondTest.spec.js",
       "file": "cypress\\e2e\\secondTest.spec.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "3d54631c-f253-4857-b3a0-f4ace8655df9",
+          "uuid": "2241a370-3fbf-489c-a6cd-a6b07e6120ea",
           "title": "Test log out",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "verify log out successfully",
               "fullTitle": "Test log out verify log out successfully",
               "timedOut": null,
-              "duration": 3721,
+              "duration": 4734,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,18 +47,18 @@
               "context": null,
               "code": "cy.contains(' Settings ').click();\ncy.contains(' Or click here to logout. ').click();\ncy.get('.navbar-nav').should('contain', ' Sign in ');",
               "err": {},
-              "uuid": "81753a55-64ba-4b38-8da6-943aab473679",
-              "parentUUID": "3d54631c-f253-4857-b3a0-f4ace8655df9",
+              "uuid": "9f1f61ad-fac7-4a06-9d8a-dce58cb49660",
+              "parentUUID": "2241a370-3fbf-489c-a6cd-a6b07e6120ea",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": ["81753a55-64ba-4b38-8da6-943aab473679"],
+          "passes": ["9f1f61ad-fac7-4a06-9d8a-dce58cb49660"],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 3721,
+          "duration": 4734,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -74,7 +74,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "091e30ab-248f-4541-a0ee-95d9a9e16106",
+      "uuid": "a1cb85bf-83da-4b98-97b2-1c8e0ec43597",
       "title": "",
       "fullFile": "cypress\\e2e\\firstTest.spec.js",
       "file": "cypress\\e2e\\firstTest.spec.js",
@@ -83,7 +83,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "9b09abb8-ac8a-4892-a15f-0db748d6a6d4",
+          "uuid": "fc547f6e-ea55-4595-b400-684cc80879c8",
           "title": "Test with backend",
           "fullFile": "",
           "file": "",
@@ -94,7 +94,7 @@
               "title": "delete an new article in global feed",
               "fullTitle": "Test with backend delete an new article in global feed",
               "timedOut": null,
-              "duration": 12006,
+              "duration": 13194,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -103,18 +103,18 @@
               "context": null,
               "code": "// const userCredentials = {\n//   \"user\": {\n//       \"email\": \"artem.bondar16@gmail.com\",\n//       \"password\": \"CypressTest1\"\n//   }\n// }\nconst bodyRequest = {\n  \"article\": {\n    \"title\": \"Request from API XY\",\n    \"description\": \"API testing\",\n    \"body\": \"Angular\",\n    \"tagList\": []\n  }\n};\n// cy.request('POST','https://api.realworld.io/api/users/login?Con', userCredentials)\n//   .its('body')\n//   .then(body => {\n//     const token = body.user.token\ncy.get('@token').then(token => {\n  cy.request({\n    method: 'POST',\n    url: Cypress.env('apiUrl') + '/api/articles/',\n    headers: {\n      Authorization: `Token ${token}`\n    },\n    body: bodyRequest\n  }).then(response => {\n    expect(response.status).to.equal(200);\n  });\n  cy.contains('Global Feed').click();\n  cy.wait(5000);\n  cy.get('.article-preview').first().click();\n  cy.get('[class=\"article-actions\"]').contains(' Delete Article ').click();\n  cy.request({\n    method: 'GET',\n    url: Cypress.env('apiUrl') + '/api/articles?limit=10&offset=0',\n    headers: {\n      Authorization: `Token ${token}`\n    }\n  }).its('body').then(body => {\n    expect(body.articles[0].title).not.to.equal('Request from API XY');\n  });\n});",
               "err": {},
-              "uuid": "8d14c210-0018-45b2-b612-70c69ce8ddc5",
-              "parentUUID": "9b09abb8-ac8a-4892-a15f-0db748d6a6d4",
+              "uuid": "1dc078df-f099-4368-88e8-dcfde7207d94",
+              "parentUUID": "fc547f6e-ea55-4595-b400-684cc80879c8",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": ["8d14c210-0018-45b2-b612-70c69ce8ddc5"],
+          "passes": ["1dc078df-f099-4368-88e8-dcfde7207d94"],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 12006,
+          "duration": 13194,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
